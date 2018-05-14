@@ -32,7 +32,8 @@
         <!-- END PAGE LEVEL STYLES -->
         <!-- BEGIN THEME LAYOUT STYLES -->
         <!-- END THEME LAYOUT STYLES -->
-        <link rel="shortcut icon" href="favicon.ico" /> </head>
+        <link rel="shortcut icon" href="favicon.ico" />
+    </head>
     <!-- END HEAD -->
 
     <body class=" login">
@@ -48,7 +49,7 @@
             @yield('content')
             <!-- END CONTENT FORM -->
         </div>
-        <div class="copyright"> 2018 © Metronic. Admin Dashboard Template. </div>
+        <div class="copyright"> {{ date('Y') }} &copy; SPPD <a target="_blank" href="https://dkis.cirebonkota.go.id">DKIS</a> </div>
         <!--[if lt IE 9]>
         <script src="{{ asset('assets/global/plugins/respond.min.js') }}"></script>
         <script src="{{ asset('assets/global/plugins/excanvas.min.js') }}"></script> 
@@ -75,15 +76,6 @@
         <!-- END PAGE LEVEL SCRIPTS -->
         <!-- BEGIN THEME LAYOUT SCRIPTS -->
         <!-- END THEME LAYOUT SCRIPTS -->
-        <script>
-            $(document).ready(function()
-            {
-                $('#clickmewow').click(function()
-                {
-                    $('#radio1003').attr('checked', 'checked');
-                });
-            })
-        </script>
     </body>
 
 </html>
