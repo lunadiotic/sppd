@@ -30,3 +30,13 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function () {
+    Route::get('/', 'HomeController@index')->name('index');
+    Route::resource('instansi', 'InstansiController');
+});
+
+
+Route::group(['prefix' => 'table', 'as' => 'table.', 'middleware' => 'auth'], function () {
+    Route::get('instansi', 'InstansiController@dataTable')->name('instansi');
+});

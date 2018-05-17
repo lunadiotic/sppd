@@ -56,8 +56,8 @@
                 <li class="heading">
                     <h3 class="uppercase">Option</h3>
                 </li>
-                <li class="nav-item  ">
-                    <a href="#" class="nav-link">
+                <li class="nav-item {{ Route::currentRouteName() == "admin.instansi.index" ? 'active open' : '' }}">
+                    <a href="{{ route('admin.instansi.index') }}" class="nav-link">
                         <i class="icon-settings"></i>
                         <span class="title">Instansi</span>
                     </a>

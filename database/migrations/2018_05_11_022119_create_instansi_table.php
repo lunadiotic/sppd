@@ -18,9 +18,9 @@ class CreateInstansiTable extends Migration
             $table->string('nama');
             $table->string('alamat');
             $table->string('telepon');
-            $table->string('email');
-            $table->string('situs');
-            $table->string('logo');
+            $table->string('email')->nullable();
+            $table->string('situs')->nullable();
+            $table->string('logo')->nullable();
             $table->boolean('status');
             $table->timestamps();
         });
