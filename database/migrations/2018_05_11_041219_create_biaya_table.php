@@ -15,7 +15,6 @@ class CreateBiayaTable extends Migration
     {
         Schema::create('biaya', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('parent_id')->unsigned();
             $table->string('nama');
             $table->boolean('status');
             $table->timestamps();

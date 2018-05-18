@@ -66,7 +66,6 @@ class InstansiServices extends GlobalServices {
             })
             ->addColumn('action', function($model) { 
                 return view('layouts.partials._action', [
-                    'model' => $model,
                     'show_url' => route('admin.instansi.show', $model->id),
                     'edit_url' => route('admin.instansi.edit', $model->id),
                     'delete_url' => route('admin.instansi.destroy', $model->id)

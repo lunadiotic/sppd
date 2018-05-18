@@ -35,8 +35,8 @@
                 <li class="heading">
                     <h3 class="uppercase">Data Master</h3>
                 </li>
-                <li class="nav-item  ">
-                    <a href="#" class="nav-link">
+                <li class="nav-item {{ Route::currentRouteName() == "admin.biaya.index" ? 'active open' : '' }}">
+                    <a href="{{ route('admin.biaya.index') }}" class="nav-link">
                         <i class="icon-calculator"></i>
                         <span class="title">Biaya</span>
                     </a>
