@@ -41,8 +41,8 @@
                         <span class="title">Biaya</span>
                     </a>
                 </li>
-                <li class="nav-item  ">
-                    <a href="#" class="nav-link">
+                <li class="nav-item {{ Route::currentRouteName() == "admin.pegawai.index" ? 'active open' : '' }}">
+                    <a href="{{ route('admin.pegawai.index') }}" class="nav-link">
                         <i class="icon-users"></i>
                         <span class="title">Pegawai</span>
                     </a>

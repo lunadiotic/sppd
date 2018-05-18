@@ -35,10 +35,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
     Route::get('/', 'HomeController@index')->name('index');
     Route::resource('instansi', 'InstansiController');
     Route::resource('biaya', 'BiayaController');
+    Route::resource('pegawai', 'PegawaiController');
 });
 
 
 Route::group(['prefix' => 'table', 'as' => 'table.', 'middleware' => 'auth'], function () {
     Route::get('instansi', 'InstansiController@dataTable')->name('instansi');
     Route::get('biaya', 'BiayaController@dataTable')->name('biaya');
+    Route::get('pegawai', 'PegawaiController@dataTable')->name('pegawai');
 });

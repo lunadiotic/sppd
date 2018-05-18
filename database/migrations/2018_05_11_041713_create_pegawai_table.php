@@ -15,12 +15,13 @@ class CreatePegawaiTable extends Migration
     {
         Schema::create('pegawai', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nip');
+            $table->string('nip')->unique();
             $table->string('nama');
+            $table->string('skpd');
             $table->string('pangkat');
             $table->string('golongan');
             $table->string('jabatan');
-            $table->boolean('status');
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }
