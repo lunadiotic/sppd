@@ -10,4 +10,14 @@ class SuratPerintah extends Model
     protected $fillable = [
         'nomor', 'uraian', 'tanggal', 'pegawai_id', 'status'
     ];
+
+    public function sppd()
+    {
+        return $this->hasMany(Sppd::class);
+    }
+
+    public function pegawai()
+    {
+        return $this->belongsTo(Pegawai::class);
+    }
 }

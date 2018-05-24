@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use DB;
 use Yajra\Datatables\Datatables;
 
 class GlobalServices {
@@ -14,6 +15,24 @@ class GlobalServices {
     {
         session()->flash('message', $message);
         session()->flash('type', $type);
+    }
+
+    /**
+     * Select2 Search
+     */
+    public function select2($request, $table)
+    {
+        $data = [];
+
+        if ($request->has('q')) {
+            $search = $request->q;
+            $data = DB::table($table)
+                ->select('id','nama')
+                ->where('nama', 'LIKE', "%$search%")
+                ->get();
+        }
+
+        return response()->json($data);
     }
 
     /**

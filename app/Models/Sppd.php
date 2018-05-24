@@ -13,6 +13,11 @@ class Sppd extends Model
     	'tanggal_berangkat','tanggal_kembali',
     	'pengikut',
     	'keterangan',
-    	'pegawai_id'
-    ];
+		'pegawai_id', 'surat_perintah_id'
+	];
+	
+	public function pegawai()
+	{
+		return $this->belongsTo(Pegawai::class);
+	}
 }

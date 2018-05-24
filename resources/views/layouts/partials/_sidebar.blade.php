@@ -18,8 +18,8 @@
                 <li class="heading">
                     <h3 class="uppercase">SPPD</h3>
                 </li>
-                <li class="nav-item  ">
-                    <a href="#" class="nav-link">
+                <li class="nav-item {{ Route::currentRouteName() == "admin.surat.index" ? 'active open' : '' }}">
+                    <a href="{{ route('admin.surat.index') }}" class="nav-link">
                         <i class="icon-docs"></i>
                         <span class="title">Surat Perintah</span>
                     </a>
