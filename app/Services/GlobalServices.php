@@ -35,6 +35,21 @@ class GlobalServices {
         return response()->json($data);
     }
 
+    public function select2surat($request, $table)
+    {
+        $data = [];
+
+        if ($request->has('q')) {
+            $search = $request->q;
+            $data = DB::table($table)
+                ->select('id','nomor')
+                ->where('nomor', 'LIKE', "%$search%")
+                ->get();
+        }
+
+        return response()->json($data);
+    }
+
     /**
      * DataTables Instance Object
      */

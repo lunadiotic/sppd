@@ -20,4 +20,9 @@ class Sppd extends Model
 	{
 		return $this->belongsTo(Pegawai::class);
 	}
+
+	public function surat()
+	{
+		return $this->belongsTo(SuratPerintah::class, 'surat_perintah_id');
+	}
 }

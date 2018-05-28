@@ -25,8 +25,8 @@
                     </a>
                 </li>
 
-                <li class="nav-item  ">
-                    <a href="#" class="nav-link">
+                <li class="nav-item {{ Route::currentRouteName() == "admin.sppd.index" ? 'active open' : '' }}">
+                    <a href="{{ route('admin.sppd.index') }}" class="nav-link">
                         <i class="icon-folder-alt"></i>
                         <span class="title">SPPD</span>
                     </a>

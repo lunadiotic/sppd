@@ -60,7 +60,7 @@
         </div>
         <!-- END PAGE BAR -->
         <!-- BEGIN PAGE TITLE-->
-        <h1 class="page-title"> Surat Perintah
+        <h1 class="page-title"> Sppd
             <small>Data Table</small>
         </h1>
         <!-- END PAGE TITLE-->
@@ -75,7 +75,7 @@
                             <span class="caption-subject bold uppercase">Data</span>
                         </div>
                         <div class="actions">
-                            <a href="{{ route('admin.surat.create') }}" class="btn blue btn-outline">
+                            <a href="{{ route('admin.sppd.create') }}" class="btn blue btn-outline">
                                 <i class="fa fa-plus"></i> Add </a>
                         </div>
                         <div class="tools"> </div>
@@ -85,8 +85,11 @@
                             <thead>
                                 <tr>
                                     <th class="">id</th>
-                                    <th class="">Nomor</th>
+                                    <th class="">Nomor SP</th>
+                                    <th class="">Nomor SPPD</th>
+                                    <th class="">Atas Nama</th>
                                     <th class="">Tanggal</th>
+                                    <th class="">Status</th>
                                     <th class=""></th>
                                 </tr>
                             </thead>
@@ -111,11 +114,14 @@
         $('#dataTable').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('table.surat') }}",
+            ajax: "{{ route('table.sppd') }}",
             columns: [
                 {data: 'id', name: 'id'},
+                {data: 'nomor_sp', name: 'nomor_sp'},
                 {data: 'nomor', name: 'nomor'},
+                {data: 'nama', name: 'nama'},
                 {data: 'tanggal', name: 'tanggal'},
+                {data: 'status', name: 'status'},
                 {data: 'action', name: 'action', orderable: false, searchable: false}
             ]
         });

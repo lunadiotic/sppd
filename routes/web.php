@@ -37,6 +37,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
     Route::resource('biaya', 'BiayaController');
     Route::resource('pegawai', 'PegawaiController');
     Route::resource('surat', 'SuratController');
+    Route::resource('sppd', 'SppdController');
 });
 
 
@@ -45,8 +46,10 @@ Route::group(['prefix' => 'table', 'as' => 'table.', 'middleware' => 'auth'], fu
     Route::get('biaya', 'BiayaController@dataTable')->name('biaya');
     Route::get('pegawai', 'PegawaiController@dataTable')->name('pegawai');
     Route::get('surat', 'SuratController@dataTable')->name('surat');
+    Route::get('sppd', 'SppdController@dataTable')->name('sppd');
 });
 
 Route::group(['prefix' => 'api/select', 'as' => 'api.select.', 'middleware' => 'auth'], function () {
+    Route::get('surat/', 'SuratController@getSelect2Surat')->name('surat');
     Route::get('surat/pegawai', 'SuratController@getSelect2')->name('surat.pegawai');
 });

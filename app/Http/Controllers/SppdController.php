@@ -3,15 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Services\SuratServices;
-use App\Http\Requests\SuratRequest;
+use App\Services\SppdServices;
 
-class SuratController extends Controller
+class SppdController extends Controller
 {
     public $srv;
     public function __construct()
     {
-        $this->srv = new SuratServices();
+        $this->srv = new SppdServices();
     }
 
     /**
@@ -21,7 +20,7 @@ class SuratController extends Controller
      */
     public function index()
     {
-        return view('pages.surat.index');
+        return view('pages.sppd.index');
     }
 
     /**
@@ -31,7 +30,7 @@ class SuratController extends Controller
      */
     public function create()
     {
-        return view('pages.surat.create');
+        return view('pages.sppd.create');
     }
 
     /**
@@ -42,10 +41,10 @@ class SuratController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request->all();
+        return $request->all();
         $pelaksana = $request->pelaksana;
         $this->srv->create($request);
-        return redirect()->route('admin.surat.index');
+        return redirect()->route('admin.sppd.index');
     }
 
     /**
@@ -57,7 +56,7 @@ class SuratController extends Controller
     public function show($id)
     {
         $data = $this->srv->find($id);
-        return view('pages.surat.show', compact('data'));
+        return view('pages.sppd.show', compact('data'));
     }
 
     /**
@@ -69,7 +68,7 @@ class SuratController extends Controller
     public function edit($id)
     {
         $data = $this->srv->find($id);
-        return view('pages.surat.edit', compact('data'));
+        return view('pages.sppd.edit', compact('data'));
     }
 
     /**
@@ -82,7 +81,7 @@ class SuratController extends Controller
     public function update(Request $request, $id)
     {
         $this->srv->update($request, $id);
-        return redirect()->route('admin.surat.index');
+        return redirect()->route('admin.sppd.index');
     }
 
     /**
@@ -94,7 +93,7 @@ class SuratController extends Controller
     public function destroy($id)
     {
         $this->srv->delete($id);
-        return redirect()->route('admin.surat.index');
+        return redirect()->route('admin.sppd.index');
     }
 
     /**
@@ -103,21 +102,5 @@ class SuratController extends Controller
     public function dataTable()
     {
         return $this->srv->getTable();
-    }
-
-    /**
-     * Select2 AJAX
-     */
-    public function getSelect2(Request $request)
-    {
-        return $this->srv->select2($request, 'pegawai');
-    }
-
-    /**
-     * Select2 AJAX
-     */
-    public function getSelect2Surat(Request $request)
-    {
-        return $this->srv->select2surat($request, 'surat_perintah');
     }
 }
