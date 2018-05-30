@@ -41,7 +41,8 @@ class SppdController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->all();
+        // $request['pengikut'] = implode(",", $request['pengikut']);
+        // return $request->all();
         $pelaksana = $request->pelaksana;
         $this->srv->create($request);
         return redirect()->route('admin.sppd.index');

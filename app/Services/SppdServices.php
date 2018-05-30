@@ -9,16 +9,11 @@ class SppdServices extends GlobalServices {
 
     public function create($request) 
     {
-        $surat = $request->except('pelaksana');
-        $pelaksana = $request->pelaksana;
-        $sp = SuratPerintah::create($surat);
-        foreach ($pelaksana as $id) {
-            $sp->sppd()->create([
-                'pegawai_id' => $id,
-            ]);
-        }
-        $this->notif('Data has been created', 'success');
 
+        // $request['pengikut'] = array_chunk($request['pengikut'],3);
+        $request['pengikut'] = implode(",", $request['pengikut']);
+        Sppd::create($request->all());
+        $this->notif('Data has been created', 'success');
         return;
     }
 
@@ -54,7 +49,6 @@ class SppdServices extends GlobalServices {
     public function delete($id)
     {
         $data = $this->find($id);
-        $data->sppd()->delete();
         $data->delete();    
         $this->notif('Data has been deleted', 'success');
         return;

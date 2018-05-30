@@ -73,23 +73,23 @@
         <div class="row">
             <div class="col-md-5">
                 <div class="form-group{{ $errors->has('nama_pengikut') ? ' has-error' : '' }}">
-                    {!! Form::label('nama_pengikut[]', 'Nama') !!}
-                    {!! Form::text('nama_pengikut[]', null, ['class' => 'form-control', 'required' => 'required']) !!}
-                    <small class="text-danger">{{ $errors->first('nama_pengikut[]') }}</small>
+                    {!! Form::label('pengikut[]', 'Nama') !!}
+                    {!! Form::text('pengikut[]', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                    <small class="text-danger">{{ $errors->first('pengikut[]') }}</small>
                 </div>
             </div>
             <div class="col-md-2">
-                <div class="form-group{{ $errors->has('umur_pengikut[]') ? ' has-error' : '' }}">
-                    {!! Form::label('umur_pengikut[]', 'Umur') !!}
-                    {!! Form::text('umur_pengikut[]', null, ['class' => 'form-control', 'required' => 'required']) !!}
-                    <small class="text-danger">{{ $errors->first('umur_pengikut[]') }}</small>
+                <div class="form-group{{ $errors->has('pengikut[]') ? ' has-error' : '' }}">
+                    {!! Form::label('pengikut[]', 'Umur') !!}
+                    {!! Form::text('pengikut[]', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                    <small class="text-danger">{{ $errors->first('pengikut[]') }}</small>
                 </div>
             </div>
             <div class="col-md-5">
                 <div class="form-group{{ $errors->has('hubungan_pengikut') ? ' has-error' : '' }}">
-                    {!! Form::label('hubungan_pengikut[]', 'Hubungan Keluarga') !!}
-                    {!! Form::text('hubungan_pengikut[]', null, ['class' => 'form-control', 'required' => 'required']) !!}
-                    <small class="text-danger">{{ $errors->first('hubungan_pengikut[]') }}</small>
+                    {!! Form::label('pengikut[]', 'Hubungan Keluarga') !!}
+                    {!! Form::text('pengikut[]', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                    <small class="text-danger">{{ $errors->first('pengikut[]') }}</small>
                 </div>
             </div>
         </div>
@@ -119,7 +119,7 @@
             autoclose: true
         });    
         $("#btn1").click(function(){
-            $("#relation").append('<div class="row"><div class="col-md-5"><div class="form-group"><label for="nama_pengikut[]">Nama</label><input class="form-control" required="required" name="nama_pengikut[]" type="text" id="nama_pengikut[]"><small class="text-danger"></small></div></div><div class="col-md-2"><div class="form-group"><label for="umur_pengikut[]">Umur</label><input class="form-control" required="required" name="umur_pengikut[]" type="text" id="umur_pengikut[]"><small class="text-danger"></small></div></div><div class="col-md-5"><div class="form-group"><label for="hubungan_pengikut[]">Hubungan Keluarga</label><input class="form-control" required="required" name="hubungan_pengikut[]" type="text" id="hubungan_pengikut[]"><small class="text-danger"></small></div></div></div>');
+            $("#relation").append('<div class="row"><div class="col-md-5"><div class="form-group"><label for="pengikut[]">Nama</label><input class="form-control" required="required" name="pengikut[]" type="text" id="pengikut[]"><small class="text-danger"></small></div></div><div class="col-md-2"><div class="form-group"><label for="pengikut[]">Umur</label><input class="form-control" required="required" name="pengikut[]" type="text" id="pengikut[]"><small class="text-danger"></small></div></div><div class="col-md-5"><div class="form-group"><label for="pengikut[]">Hubungan Keluarga</label><input class="form-control" required="required" name="pengikut[]" type="text" id="pengikut[]"><small class="text-danger"></small></div></div></div>');
         });
     });
 </script>
