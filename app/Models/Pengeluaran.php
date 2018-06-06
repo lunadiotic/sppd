@@ -8,8 +8,8 @@ class Pengeluaran extends Model
 {
     protected $table = 'pengeluaran';
     protected $fillable = [
-        'nomor', 'pemberi', 'nominal', 
+        'nomor', 'sumber_dana', 'nominal', 
         'terbilang', 'keperluan', 'belanja_jenis', 
-        'belanja_obyek', 'belanja_rincian', 'sppd_id'
+        'belanja_obyek', 'belanja_rincian', 'tanggal', 'sppd_id'
     ];
 }

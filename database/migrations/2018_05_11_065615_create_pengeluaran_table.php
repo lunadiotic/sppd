@@ -16,13 +16,14 @@ class CreatePengeluaranTable extends Migration
         Schema::create('pengeluaran', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nomor');
-            $table->string('pemberi');
+            $table->string('sumber_dana');
             $table->double('nominal');
             $table->string('terbilang');
             $table->string('keperluan');
             $table->string('belanja_jenis');
             $table->string('belanja_obyek');
             $table->string('belanja_rincian');
+            $table->date('tanggal');
             $table->integer('sppd_id')->unsigned();
             $table->foreign('sppd_id')->references('id')->on('sppd');
             $table->timestamps();

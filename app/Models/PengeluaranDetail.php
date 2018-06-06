@@ -8,6 +8,6 @@ class PengeluaranDetail extends Model
 {
     protected $table = 'pengeluaran_detail';
     protected $fillable = [
-        'uraian', 'satuan', 'qty', 'biaya', 'total', 'tanggal', 'pengeluaran_id'
+        'uraian', 'qty', 'satuan', 'biaya', 'total', 'pengeluaran_id', 'biaya_id'
     ];
 }

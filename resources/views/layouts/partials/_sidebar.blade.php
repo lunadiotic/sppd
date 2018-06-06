@@ -32,6 +32,13 @@
                     </a>
                 </li>
 
+                <li class="nav-item {{ Route::currentRouteName() == "admin.pengeluaran.index" ? 'active open' : '' }}">
+                        <a href="{{ route('admin.pengeluaran.index') }}" class="nav-link">
+                            <i class="icon-basket"></i>
+                            <span class="title">Pengeluaran</span>
+                        </a>
+                    </li>
+
                 <li class="heading">
                     <h3 class="uppercase">Data Master</h3>
                 </li>
