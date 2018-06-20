@@ -12,4 +12,9 @@ class Pengeluaran extends Model
         'terbilang', 'keperluan', 'belanja_jenis', 
         'belanja_obyek', 'belanja_rincian', 'tanggal', 'sppd_id'
     ];
+
+    public function detail()
+    {
+        return $this->hasMany(\App\Models\PengeluaranDetail::class);
+    }
 }

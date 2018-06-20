@@ -22,7 +22,7 @@ class CreatePengeluaranDetailTable extends Migration
             $table->string('uraian');
             $table->integer('qty')->default(1);
             $table->string('satuan')->nullable;
-            $table->double('biaya');
+            $table->double('harga');
             $table->double('total');
             $table->timestamps();
         }); 

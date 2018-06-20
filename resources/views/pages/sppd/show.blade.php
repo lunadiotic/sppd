@@ -7,10 +7,12 @@
   $tanggal_berangkat = new \Carbon\Carbon($data->tanggal_berangkat);
   $tanggal_kembali = new \Carbon\Carbon($data->tanggal_kembali);
   $lamanya = $tanggal_berangkat->diffInDays($tanggal_kembali);
-    setlocale(LC_TIME, 'IND');
-
+  setlocale(LC_TIME, 'IND');
+  $pengikut = [];
+  if(!empty($data->pengikut)) {
     $data_pengikut = explode(',', $data->pengikut);
     $pengikut = array_chunk($data_pengikut,3);
+  }
 @endphp
 
 @push('styles')
@@ -110,14 +112,23 @@
                           <td width="67">Umur </td>
                           <td width="468">Hubungan Kekeluargaan </td>
                         </tr>
-                        @foreach ($pengikut as $row) <?php $no++  ?>
-                        <tr>
-                          <td>&nbsp;</td>
-                          <td>{{ $no }}. {{ $row[0] }}</td>
-                          <td>{{ $row[1] }}</td>
-                          <td>{{ $row[2] }}</td>
-                        </tr>
-                        @endforeach
+                        @if ($pengikut)
+                          @foreach ($pengikut as $row) <?php $no++  ?>
+                          <tr>
+                              <td>&nbsp;</td>
+                              <td>{{ $no }}. {{ $row[0] }}</td>
+                              <td>{{ $row[1] }}</td>
+                              <td>{{ $row[2] }}</td>
+                          </tr>
+                          @endforeach
+                        @else
+                          <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                          </tr>
+                        @endif
                         <tr>
                           <td> 9</td>
                           <td>Pembebasan<br>

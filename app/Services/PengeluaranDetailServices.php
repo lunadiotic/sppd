@@ -3,11 +3,10 @@
 namespace App\Services;
 
 use App\Models\Pengeluaran;
+use App\Models\PengeluaranDetail;
 use App\Services\GlobalServices;
 
-class PengeluaranServices extends GlobalServices {
-
-    private $imageType = 'logo';
+class PengeluaranDetailServices extends GlobalServices {
 
     public function create($request) 
     {
@@ -36,25 +35,28 @@ class PengeluaranServices extends GlobalServices {
         $this->notif('Data has been deleted', 'success');
         return $data;
     }
-    
-    public function getTable()
+
+    public function getTableDetail($id)
     {
-        $model = Pengeluaran::query();
+        $pengeluaran = Pengeluaran::find($id);
+        $model = $pengeluaran->detail;
+        return $model;
+    }
+    
+    public function getTable($id)
+    {
+        $pengeluaran = Pengeluaran::whereId($id)->with('detail.biaya')->first();
+
+        $model = $pengeluaran->detail;
         return $this->dataTable($model)
-            ->addColumn('status', function ($model) {
-                return $model->status == 1 ? 'Aktif' : 'Tidak Aktif';
-            })
-            ->addColumn('detail', function ($model) {
-                return '<a href="' . route('admin.pengeluaran.detail.index', $model->id) . '" class="btn btn-sm green btn-outline">Detail</a>';
-            })
-            ->addColumn('action', function($model) { 
+            ->addColumn('action', function($model) use ($id) { 
                 return view('layouts.partials._action', [
-                    'show_url' => route('admin.pengeluaran.show', $model->id),
-                    'edit_url' => route('admin.pengeluaran.edit', $model->id),
-                    'delete_url' => route('admin.pengeluaran.destroy', $model->id)
+                    'show_url' => route('admin.pengeluaran.detail.show', [$id, $model->id]),
+                    'edit_url' => route('admin.pengeluaran.detail.edit', [$id, $model->id]),
+                    'delete_url' => route('admin.pengeluaran.detail.destroy', [$id, $model->id])
                 ]);
             })
-            ->rawColumns(['action', 'detail'])
+            ->rawColumns(['action'])
             ->make(true);
     }
 

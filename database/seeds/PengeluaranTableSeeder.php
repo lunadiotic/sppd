@@ -33,7 +33,7 @@ class PengeluaranTableSeeder extends Seeder
                 'uraian' => 'Golongan III',
                 'qty' => 1,
                 'satuan' => 'Hari',
-                'biaya' => 519000,
+                'harga' => 519000,
                 'total' => 519000
             ],
             [
@@ -42,7 +42,7 @@ class PengeluaranTableSeeder extends Seeder
                 'uraian' => 'Bensin',
                 'qty' => 1,
                 'satuan' => null,
-                'biaya' => 248000,
+                'harga' => 248000,
                 'total' => 248000
             ],
         ];
