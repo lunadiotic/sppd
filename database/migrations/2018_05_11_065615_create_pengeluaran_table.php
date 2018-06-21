@@ -17,13 +17,14 @@ class CreatePengeluaranTable extends Migration
             $table->increments('id');
             $table->string('nomor');
             $table->string('sumber_dana');
-            $table->double('nominal');
-            $table->string('terbilang');
+            $table->double('nominal')->nullable();
+            $table->string('terbilang')->nullable();;
             $table->string('keperluan');
             $table->string('belanja_jenis');
             $table->string('belanja_obyek');
             $table->string('belanja_rincian');
             $table->date('tanggal');
+            $table->text('keterangan')->nullable();;
             $table->integer('sppd_id')->unsigned();
             $table->foreign('sppd_id')->references('id')->on('sppd');
             $table->timestamps();

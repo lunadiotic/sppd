@@ -3,7 +3,7 @@
 @php
   $no = 0;
   $setting = \App\Models\Instansi::where('status', 1)->first();
-  $dt = new \Carbon\Carbon($data->tanggal);
+  $dt = new \Carbon\Carbon($data['pengeluaran']->tanggal);
 	setlocale(LC_TIME, 'IND');
 @endphp
 
@@ -52,7 +52,7 @@
                             </tr>
                             <tr>
                             <td>&nbsp;</td>
-                            <td align="center"><strong>Nomor: 090/II-DKIS/2018</strong></td>
+                            <td align="center"><strong>Nomor: {{ $data['pengeluaran']->nomor }}</strong></td>
                             <td>&nbsp;</td>
                             </tr>
                         </tbody>
@@ -66,25 +66,25 @@
                         <td width="144">&nbsp;</td>
                         <td width="202">Terima dari</td>
                         <td width="8">:</td>
-                        <td width="625">Bendahara Pengeluaran</td>
+                        <td width="625">{{ $data['pengeluaran']->sumber_dana }}</td>
                         </tr>
                         <tr>
                         <td>&nbsp;</td>
                         <td>Uang Sejumlah</td>
                         <td>:</td>
-                        <td>Rp767.000</td>
+                        <td>Rp{{ Money::rupiah($data['total']) }}</td>
                         </tr>
                         <tr>
                         <td>&nbsp;</td>
                         <td>Terbilang</td>
                         <td>:</td>
-                        <td>Tujuh Ratus Enam Puluh Tujuh Ribu Rupiah</td>
+                        <td>{{ Money::terbilang($data['total']) }}</td>
                         </tr>
                         <tr>
                         <td>&nbsp;</td>
                         <td>Untuk Keperluan</td>
                         <td>:</td>
-                        <td>Biaya Perjalanan Dinas Ke Bandung Tanggal 12 Feb s/d 04 Maret 2018</td>
+                        <td>{{ $data['pengeluaran']->keperluan }}</td>
                         </tr>
                     </tbody>
                     </table>
@@ -96,19 +96,19 @@
                         <td width="344">&nbsp;</td>
                         <td width="122">Jenis Belanja</td>
                         <td width="5">:</td>
-                        <td width="409">-</td>
+                        <td width="409">{{ $data['pengeluaran']->belanja_jenis }}</td>
                         </tr>
                         <tr>
                         <td>&nbsp;</td>
                         <td>Obyek Belanja</td>
                         <td>:</td>
-                        <td>-</td>
+                        <td>{{ $data['pengeluaran']->belanja_obyek }}</td>
                         </tr>
                         <tr>
                         <td>&nbsp;</td>
                         <td>Rincian Belanja</td>
                         <td>:</td>
-                        <td>-</td>
+                        <td>{{ $data['pengeluaran']->belanja_rincian }}</td>
                         </tr>
                     </tbody>
                     </table>
@@ -124,7 +124,7 @@
                         <tr>
                         <td align="center">Mengatahui / Menyetujui </td>
                         <td>&nbsp;</td>
-                        <td align="center">Cirebon, 15 Maret 2019 </td>
+                        <td align="center">Cirebon, {{ $dt->formatLocalized('%d %B %Y') }} </td>
                         </tr>
                         <tr>
                         <td align="center">Kepala Dinas Komunikasi </td>
@@ -152,14 +152,14 @@
                         <td>&nbsp;</td>
                         </tr>
                         <tr>
-                        <td align="center">IING DAIMAN, S.Ip, M.Si </td>
+                        <td align="center">{{ $data['pengeluaran']->sppd->surat->pegawai->nama }} </td>
                         <td align="center">MEISARI, SE </td>
-                        <td align="center">ANDI WIBOWO, S.Sos, M.Si </td>
+                        <td align="center">{{ $data['pengeluaran']->sppd->pegawai->nama }} </td>
                         </tr>
                         <tr>
-                        <td align="center">NIP 196808221997031003 </td>
+                        <td align="center">NIP {{ $data['pengeluaran']->sppd->surat->pegawai->nip }} </td>
                         <td align="center">NIP 198405072010012012 </td>
-                        <td align="center">NIP 198312202009021003 </td>
+                        <td align="center">NIP {{ $data['pengeluaran']->sppd->pegawai->nip }} </td>
                         </tr>
                     </tbody>
                     </table>

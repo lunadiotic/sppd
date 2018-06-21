@@ -21,6 +21,7 @@ class PengeluaranTableSeeder extends Seeder
             'belanja_obyek' => '-',
             'belanja_rincian' => '-',
             'tanggal' => '2018-03-15',
+            'keterangan' => 'Tanggal : 12 Feb s/d 04 Maret 2018<br>Ke : Bandung<br>Acara : Mengikuti Pendidikan dan Pelatihan Kepemimpinan Tingkat IV Angkatan I bertempat di Bandung',
             'sppd_id' => '1', 
         ];
 

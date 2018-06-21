@@ -55,7 +55,7 @@ class PengeluaranController extends Controller
      */
     public function show($id)
     {
-        $data = $this->srv->find($id);
+        $data = $this->srv->show($id);
         return view('pages.pengeluaran.show', compact('data'));
     }
 

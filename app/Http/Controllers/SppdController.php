@@ -104,4 +104,12 @@ class SppdController extends Controller
     {
         return $this->srv->getTable();
     }
+
+    /**
+     * Select2 AJAX
+     */
+    public function getSelect2(Request $request)
+    {
+        return $this->srv->select2surat($request, 'sppd');
+    }
 }

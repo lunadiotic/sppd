@@ -71,7 +71,7 @@
                             <div class="form-body">
                                 <div id="form-sppd">
                                     <div class="form-group{{ $errors->has('surat_perintah_id') ? ' has-error' : '' }}">
-                                        {!! Form::label('surat_perintah_id', 'Pelaksana') !!}
+                                        {!! Form::label('surat_perintah_id', 'Nomor Surat Perintah') !!}
                                         <select class="select2surat form-control" name="surat_perintah_id">
                                         @if (!empty($data->surat))
                                             <option value="{{ $data->surat['id'] }}" selected>{{ $data->surat['nomor'] }}</option>

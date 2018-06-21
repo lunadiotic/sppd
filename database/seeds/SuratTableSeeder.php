@@ -25,7 +25,7 @@ class SuratTableSeeder extends Seeder
 
         $sppd = [
             [
-                'nomor' => '',
+                'nomor' => '090/117-DKIS/2018',
                 'perjalanan' => 'Mengikuti Pendidikan dan Pelatihan Kepemimpinan Tingkat IV Angkatan I',
                 'tempat_berangkat' => 'Cirebon',
                 'tempat_tujuan' => 'Bandung',
@@ -38,7 +38,7 @@ class SuratTableSeeder extends Seeder
                 'status' => '1'
             ],
             [
-                'nomor' => '',
+                'nomor' => '090/118-DKIS/2018',
                 'perjalanan' => 'Mengikuti Pendidikan dan Pelatihan Kepemimpinan Tingkat IV Angkatan I',
                 'tempat_berangkat' => 'Cirebon',
                 'tempat_tujuan' => 'Bandung',

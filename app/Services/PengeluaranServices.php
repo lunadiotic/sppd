@@ -7,8 +7,6 @@ use App\Services\GlobalServices;
 
 class PengeluaranServices extends GlobalServices {
 
-    private $imageType = 'logo';
-
     public function create($request) 
     {
         $data = $request->all();
@@ -19,6 +17,22 @@ class PengeluaranServices extends GlobalServices {
     public function find($id)
     {
         return $instansi = Pengeluaran::find($id);
+    }
+
+    public function show($id)
+    {
+        $data['pengeluaran'] = Pengeluaran::find($id);
+        $data['total'] = 0;
+
+        if(count($data['pengeluaran']->detail) > 0) {
+            foreach ($data['pengeluaran']->detail as $row) {
+                $data['total'] += $row->total;
+            }
+
+            return $data;
+        }
+
+        return $data;
     }
 
     public function update($request, $id)

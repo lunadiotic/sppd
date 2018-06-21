@@ -57,4 +57,5 @@ Route::group(['prefix' => 'table', 'as' => 'table.', 'middleware' => 'auth'], fu
 Route::group(['prefix' => 'api/select', 'as' => 'api.select.', 'middleware' => 'auth'], function () {
     Route::get('surat/', 'SuratController@getSelect2Surat')->name('surat');
     Route::get('surat/pegawai', 'SuratController@getSelect2')->name('surat.pegawai');
+    Route::get('sppd', 'SppdController@getSelect2')->name('sppd');
 });
