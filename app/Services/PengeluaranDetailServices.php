@@ -12,18 +12,18 @@ class PengeluaranDetailServices extends GlobalServices {
     {
         $data = $request->all();
         $this->notif('Data has been created', 'success');
-        return $instansi = Pengeluaran::create($data);
+        return $instansi = PengeluaranDetail::create($data);
     }
 
     public function find($id)
     {
-        return $instansi = Pengeluaran::find($id);
+        return $instansi = PengeluaranDetail::find($id);
     }
 
     public function update($request, $id)
     {
         $data = $request->all();
-        $instansi = Pengeluaran::find($id);
+        $instansi = PengeluaranDetail::find($id);
         $this->notif('Data has been updated', 'success');
         return $instansi->update($data);
     }
@@ -33,6 +33,13 @@ class PengeluaranDetailServices extends GlobalServices {
         $data = $this->find($id);
         $data->delete();
         $this->notif('Data has been deleted', 'success');
+        return $data;
+    }
+
+    public function print($id)
+    {
+        $data['pengeluaran'] = Pengeluaran::with('sppd')->find($id);
+        // $data['detail'] = PengeluaranDetail::with('biaya')->where('pengeluaran_id', $id)->get();
         return $data;
     }
 
@@ -49,6 +56,9 @@ class PengeluaranDetailServices extends GlobalServices {
 
         $model = $pengeluaran->detail;
         return $this->dataTable($model)
+            ->addColumn('qty', function ($model) {
+                return $model->qty . ' ' . $model->satuan;
+            })
             ->addColumn('action', function($model) use ($id) { 
                 return view('layouts.partials._action', [
                     'show_url' => route('admin.pengeluaran.detail.show', [$id, $model->id]),

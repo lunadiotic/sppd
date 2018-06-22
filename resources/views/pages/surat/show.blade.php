@@ -173,7 +173,7 @@
                         </tr>
                         <tr>
                           <td height="18">&nbsp;</td>
-                          <td colspan="3" align="center"><strong>{{ $data->pegawai->jabatan}}</strong></td>
+                          <td colspan="3" align="center"><strong>{{ $data->pegawai->jabatan }}</strong></td>
                         </tr>
                         <tr>
                           <td height="76" colspan="4">&nbsp;</td>

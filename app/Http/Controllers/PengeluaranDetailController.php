@@ -28,9 +28,9 @@ class PengeluaranDetailController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        return view('pages.pengeluaran.detail.create', compact('id'));
     }
 
     /**
@@ -39,9 +39,13 @@ class PengeluaranDetailController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $request['pengeluaran_id'] = $id;
+        $request['total'] = ($request->harga * $request->qty);
+        // return $request->all();
+        $this->srv->create($request);
+        return redirect()->route('admin.pengeluaran.detail.index', $id);
     }
 
     /**
@@ -50,9 +54,10 @@ class PengeluaranDetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, $detailId)
     {
-        //
+        $data = $this->srv->find($detailId);
+        return view('pages.pengeluaran.detail.show', compact('data'));
     }
 
     /**
@@ -61,9 +66,10 @@ class PengeluaranDetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, $detailId)
     {
-        //
+        $data = $this->srv->find($detailId);
+        return view('pages.pengeluaran.detail.edit', compact('data', 'id'));
     }
 
     /**
@@ -73,9 +79,10 @@ class PengeluaranDetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, $detailId)
     {
-        //
+        $this->srv->update($request, $detailId);
+        return redirect()->route('admin.pengeluaran.detail.index', $id);
     }
 
     /**
@@ -84,9 +91,10 @@ class PengeluaranDetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, $detailId)
     {
-        //
+        $this->srv->delete($detailId);
+        return redirect()->route('admin.pengeluaran.detail.index', $id);
     }
 
     /**
@@ -99,6 +107,7 @@ class PengeluaranDetailController extends Controller
 
     public function print($id)
     {
-        return view('pages.pengeluaran.detail.print');
+        $data = $this->srv->print($id);
+        return view('pages.pengeluaran.detail.print', compact('data'));
     }
 }
