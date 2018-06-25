@@ -3,7 +3,7 @@
 @section('content')
 <form class="login-form" action="{{ route('login') }}" method="POST">
     {{ csrf_field() }}
-    <h3 class="form-title font-green">Sign In</h3>
+    <h3 class="form-title font-green">Masuk</h3>
     <div class="alert alert-danger display-hide">
         <button class="close" data-close="alert"></button>
         <span> Enter any username and password. </span>
@@ -35,7 +35,7 @@
         </label>
         <a href="{{ route('password.request') }}" id="forget-password" class="forget-password">Forgot Password?</a>
     </div>
-    <div class="login-options">
+    {{-- <div class="login-options">
         <h4>Or login with</h4>
         <ul class="social-icons">
             <li>
@@ -56,7 +56,7 @@
         <p>
             <a href="{{ route('register') }}" id="register-btn" class="uppercase">Create an account</a>
         </p>
-    </div>
+    </div> --}}
 </form>
 @endsection
 

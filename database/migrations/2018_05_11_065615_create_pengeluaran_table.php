@@ -27,6 +27,7 @@ class CreatePengeluaranTable extends Migration
             $table->text('keterangan')->nullable();;
             $table->integer('sppd_id')->unsigned();
             $table->foreign('sppd_id')->references('id')->on('sppd');
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }

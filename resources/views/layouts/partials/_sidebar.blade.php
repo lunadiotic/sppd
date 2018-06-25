@@ -54,8 +54,8 @@
                         <span class="title">Pegawai</span>
                     </a>
                 </li>
-                <li class="nav-item  ">
-                    <a href="#" class="nav-link">
+                <li class="nav-item {{ Route::currentRouteName() == "admin.anggaran.index" ? 'active open' : '' }}">
+                    <a href="{{ route('admin.anggaran.index') }}" class="nav-link">
                         <i class="icon-wallet"></i>
                         <span class="title">Anggaran</span>
                     </a>

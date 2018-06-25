@@ -8,6 +8,6 @@ class Anggaran extends Model
 {
     protected $table = 'anggaran';
     protected $fillable = [
-        'dana', 'periode', 'status'
+        'dana', 'periode', 'status', 'tahun'
     ];
 }

@@ -7,11 +7,11 @@
     <label>Aktif ?</label>
     <div class="mt-radio-inline">
         <label class="mt-radio">
-            <input type="radio" name="status" id="status_1" value=1 {{ (old('status') == 1) ? 'checked' : '' }}/> Ya
+            {{ Form::radio('status', '1') }} Ya
             <span></span>
         </label>
         <label class="mt-radio">
-            <input type="radio" name="status" id="status_1" value=0 {{ (old('status') == 0) ? 'checked' : '' }}/> Tidak
+            {{ Form::radio('status', '0') }} Tidak
             <span></span>
         </label>
     </div>

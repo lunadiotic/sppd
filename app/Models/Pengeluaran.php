@@ -10,7 +10,7 @@ class Pengeluaran extends Model
     protected $fillable = [
         'nomor', 'sumber_dana', 'nominal', 
         'terbilang', 'keperluan', 'belanja_jenis', 
-        'belanja_obyek', 'belanja_rincian', 'tanggal', 'keterangan', 'sppd_id'
+        'belanja_obyek', 'belanja_rincian', 'tanggal', 'keterangan', 'sppd_id', 'status'
     ];
 
     public function detail()

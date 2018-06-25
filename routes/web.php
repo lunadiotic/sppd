@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('home');
 });
 
 // Auth::routes();
@@ -21,8 +21,8 @@ Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 // Registration Routes...
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('register', 'Auth\RegisterController@register');
+// Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+// Route::post('register', 'Auth\RegisterController@register');
 // Password Reset Routes...
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
@@ -41,6 +41,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
     Route::resource('pengeluaran', 'PengeluaranController');
     Route::resource('pengeluaran.detail', 'PengeluaranDetailController');
     Route::get('pengeluaran/{id}/print', 'PengeluaranDetailController@print')->name('pengeluaran.detail.print');
+    Route::resource('anggaran', 'AnggaranController');
 });
 
 
@@ -52,6 +53,7 @@ Route::group(['prefix' => 'table', 'as' => 'table.', 'middleware' => 'auth'], fu
     Route::get('sppd', 'SppdController@dataTable')->name('sppd');
     Route::get('pengeluaran', 'PengeluaranController@dataTable')->name('pengeluaran');
     Route::get('pengeluaran/{id}/detail', 'PengeluaranDetailController@dataTable')->name('pengeluaran.detail');
+    Route::get('anggaran', 'AnggaranController@dataTable')->name('anggaran');
 });
 
 Route::group(['prefix' => 'api/select', 'as' => 'api.select.', 'middleware' => 'auth'], function () {
