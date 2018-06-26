@@ -20,10 +20,8 @@ class CreateTransaksiTable extends Migration
             $table->double('in')->nullable();
             $table->double('out')->nullable();
             $table->double('saldo')->nullable();
-            $table->integer('sppd_id')->unsigned();
-            $table->foreign('sppd_id')->references('id')->on('sppd');
-            $table->integer('anggaran_id')->unsigned();
-            $table->foreign('anggaran_id')->references('id')->on('anggaran');
+            $table->integer('pengeluaran_id')->unsigned();
+            $table->foreign('pengeluaran_id')->references('id')->on('pengeluaran');
             $table->timestamps();
         });
     }

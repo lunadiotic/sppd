@@ -1,5 +1,24 @@
 @extends('layouts.app')
 
+@php
+    $dana = 0;
+    $saldo = 0;
+    $used = 0;
+    $sppd = 0;
+    if (\App\Models\Anggaran::where('tahun', '=', date('Y'))) {
+        $dana = \App\Models\Anggaran::where('tahun', '=', date('Y'))->sum('dana');
+    }
+    if (\App\Models\Transaksi::select('saldo')->whereYear('tanggal', date('Y'))->orderBy('id', 'DESC')->first()) {
+        $saldo = \App\Models\Transaksi::select('saldo')->whereYear('tanggal', date('Y'))->orderBy('id', 'DESC')->first()->saldo;
+    }
+    if (\App\Models\Transaksi::whereYear('tanggal', date('Y'))->orderBy('id', 'DESC')) {
+        $used = \App\Models\Transaksi::whereYear('tanggal', date('Y'))->orderBy('id', 'DESC')->sum('out');
+    }
+    if (\App\Models\Sppd::whereYear('tanggal_berangkat', date('Y'))->orderBy('id', 'DESC')) {
+        $sppd = \App\Models\Sppd::whereYear('tanggal_berangkat', date('Y'))->orderBy('id', 'DESC')->count();
+    }
+@endphp
+
 @section('content')
 <div class="page-content-wrapper">
     @if (session('status'))
@@ -67,10 +86,10 @@
                     <div class="display">
                         <div class="number">
                             <h3 class="font-green-sharp">
-                                <span data-counter="counterup" data-value="7800">0</span>
-                                <small class="font-green-sharp">$</small>
+                                <span data-counter="counterup" data-value="7800">{{ Money::rupiah($dana) }}</span>
+                                <small class="font-green-sharp">IDR </small>
                             </h3>
-                            <small>TOTAL PROFIT</small>
+                            <small>Anggaran Tahun {{ date('Y') }}</small>
                         </div>
                         <div class="icon">
                             <i class="icon-pie-chart"></i>
@@ -83,10 +102,10 @@
                     <div class="display">
                         <div class="number">
                             <h3 class="font-red-haze">
-                                <span data-counter="counterup" data-value="7800">0</span>
-                                <small class="font-green-sharp">$</small>
+                                <span data-counter="counterup" data-value="7800">{{ Money::rupiah($saldo) }}</span>
+                                <small class="font-green-sharp">IDR</small>
                             </h3>
-                            <small>TOTAL PROFIT</small><small>NEW FEEDBACKS</small>
+                            <small>Saldo</small>
                         </div>
                         <div class="icon">
                             <i class="icon-like"></i>
@@ -99,10 +118,10 @@
                     <div class="display">
                         <div class="number">
                             <h3 class="font-blue-sharp">
-                                <span data-counter="counterup" data-value="7800">0</span>
-                                <small class="font-green-sharp">$</small>
+                                <span data-counter="counterup" data-value="7800">{{ Money::rupiah($used) }}</span>
+                                <small class="font-green-sharp">IDR</small>
                             </h3>
-                            <small>NEW ORDERS</small>
+                            <small>Digunakan</small>
                         </div>
                         <div class="icon">
                             <i class="icon-basket"></i>
@@ -115,10 +134,10 @@
                     <div class="display">
                         <div class="number">
                             <h3 class="font-purple-soft">
-                                <span data-counter="counterup" data-value="7800">0</span>
-                                <small class="font-green-sharp">$</small>
+                                <span data-counter="counterup" data-value="7800">{{ $sppd }}</span>
+                                <small class="font-green-sharp"></small>
                             </h3>
-                            <small>NEW USERS</small>
+                            <small>Jumlah SPPD</small>
                         </div>
                         <div class="icon">
                             <i class="icon-user"></i>

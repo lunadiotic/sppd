@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Pengeluaran;
+use App\Models\Sppd;
 use App\Services\GlobalServices;
 
 class PengeluaranServices extends GlobalServices {
@@ -10,6 +11,9 @@ class PengeluaranServices extends GlobalServices {
     public function create($request) 
     {
         $data = $request->all();
+        Sppd::where('id', $request->sppd_id)->update([
+            'status' => 1
+        ]);
         $this->notif('Data has been created', 'success');
         return $instansi = Pengeluaran::create($data);
     }

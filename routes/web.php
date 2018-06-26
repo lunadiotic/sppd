@@ -42,6 +42,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
     Route::resource('pengeluaran.detail', 'PengeluaranDetailController');
     Route::get('pengeluaran/{id}/print', 'PengeluaranDetailController@print')->name('pengeluaran.detail.print');
     Route::resource('anggaran', 'AnggaranController');
+    Route::get('laporan', 'LaporanController@index')->name('laporan.index');
+    Route::post('laporan/bulan', 'LaporanController@getByMonth')->name('laporan.month');
+    Route::post('laporan/tahun', 'LaporanController@getByYear')->name('laporan.year');
 });
 
 

@@ -15,6 +15,11 @@ class Sppd extends Model
     	'keterangan',
 		'pegawai_id', 'surat_perintah_id'
 	];
+
+	public function pengeluaran()
+	{
+		return $this->hasOne(Pengeluaran::class);
+	}
 	
 	public function pegawai()
 	{
