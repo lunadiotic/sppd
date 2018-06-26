@@ -2,8 +2,10 @@
 
 namespace App\Services;
 
+use App\Models\Sppd;
 use App\Models\Pengeluaran;
 use App\Models\PengeluaranDetail;
+use App\Models\Transaksi;
 use App\Services\GlobalServices;
 
 class PengeluaranDetailServices extends GlobalServices {
@@ -41,6 +43,25 @@ class PengeluaranDetailServices extends GlobalServices {
         $data['pengeluaran'] = Pengeluaran::with('sppd')->find($id);
         // $data['detail'] = PengeluaranDetail::with('biaya')->where('pengeluaran_id', $id)->get();
         return $data;
+    }
+
+    public function complete($id)
+    {
+        $pengeluaran = Pengeluaran::find($id);
+        $sppd = Sppd::where('id', $pengeluaran->sppd_id)->update([
+            'status' => '1'
+        ]);
+        $transaksi = Transaksi::orderBy('id', 'DESC')->first();
+
+        $newTransaksi = [
+            'tanggal' => date('Y-m-d'),
+            'last' => $last = $transaksi->saldo,
+            'out' => $out = $pengeluaran->detail->sum('total'),
+            'saldo' => ($last - $out),
+            'pengeluaran_id' => $id
+        ];
+
+        return Transaksi::create($newTransaksi);
     }
 
     public function getTableDetail($id)

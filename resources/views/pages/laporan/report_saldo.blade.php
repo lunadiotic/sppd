@@ -37,22 +37,22 @@
                 </div>
                 <br>
                 <div>
-                    <table width="100%" border="0">
+                    <table width="59%" border="0">
                         <tbody>
                         <tr>
                             <td width="50">&nbsp;</td>
-                            <td width="694" align="right">Total Anggaran :</td>
-                            <td width="698">{{ Money::rupiah($data['total_anggaran']) }}</td>
+                            <td width="716" align="right">Total Anggaran : </td>
+                            <td width="111" align="right">Rp{{ Money::rupiah($data['total_anggaran']) }}</td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
-                            <td align="right">Total SPPD :</td>
-                            <td>{{ Money::rupiah($data['total_sppd']) }}</td>
+                            <td align="right">Total SPPD : </td>
+                            <td align="right">Rp{{ Money::rupiah($data['total_sppd']) }}</td>
                         </tr>
                             <tr>
                             <td>&nbsp;</td>
-                            <td align="right">Sisa :</td>
-                            <td>{{ Money::rupiah($data['sisa']) }}</td>
+                            <td align="right">Sisa : </td>
+                            <td align="right">Rp{{ Money::rupiah($data['sisa']) }}</td>
                         </tr>
                         </tbody>
                     </table>

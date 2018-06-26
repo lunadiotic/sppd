@@ -43,7 +43,7 @@ class PengeluaranController extends Controller
     public function store(Request $request)
     {
         // return $request->all();
-        return $this->srv->create($request);
+        $this->srv->create($request);
         return redirect()->route('admin.pengeluaran.index');
     }
 

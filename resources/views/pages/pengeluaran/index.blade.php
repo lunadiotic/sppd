@@ -86,6 +86,7 @@
                                 <tr>
                                     <th class="">id</th>
                                     <th class="">Nomor</th>
+                                    <th class="">SPPD</th>
                                     <th class="">Tanggal</th>
                                     <th class="">Detail</th>
                                     <th class=""></th>
@@ -116,6 +117,7 @@
             columns: [
                 {data: 'id', name: 'id'},
                 {data: 'nomor', name: 'nomor'},
+                {data: 'sppd', name: 'sppd'},
                 {data: 'tanggal', name: 'tanggal'},
                 {data: 'detail', name: 'detail'},
                 {data: 'action', name: 'action', orderable: false, searchable: false}

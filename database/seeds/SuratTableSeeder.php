@@ -48,7 +48,7 @@ class SuratTableSeeder extends Seeder
                 'keterangan' => '',
                 'pegawai_id' => '4',
                 'surat_perintah_id' => '1',
-                'status' => '1'
+                'status' => '0'
             ]
         ];
 

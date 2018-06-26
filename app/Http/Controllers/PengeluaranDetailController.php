@@ -110,4 +110,10 @@ class PengeluaranDetailController extends Controller
         $data = $this->srv->print($id);
         return view('pages.pengeluaran.detail.print', compact('data'));
     }
+
+    public function complete($id)
+    {
+        return $data = $this->srv->complete($id);
+        return redirect()->route('admin.pengeluaran.detail.index', $id);
+    }
 }

@@ -62,6 +62,9 @@ class PengeluaranServices extends GlobalServices {
             ->addColumn('status', function ($model) {
                 return $model->status == 1 ? 'Aktif' : 'Tidak Aktif';
             })
+            ->addColumn('sppd', function ($model) {
+                return '<a href="' . route('admin.sppd.show', $model->sppd->id) .'">' . $model->sppd->nomor . '</a>';
+            })
             ->addColumn('detail', function ($model) {
                 return '<a href="' . route('admin.pengeluaran.detail.index', $model->id) . '" class="btn btn-sm green btn-outline">Detail</a>';
             })
@@ -72,7 +75,7 @@ class PengeluaranServices extends GlobalServices {
                     'delete_url' => route('admin.pengeluaran.destroy', $model->id)
                 ]);
             })
-            ->rawColumns(['action', 'detail'])
+            ->rawColumns(['action', 'detail', 'sppd'])
             ->make(true);
     }
 

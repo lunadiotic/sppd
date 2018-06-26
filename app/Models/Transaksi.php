@@ -8,6 +8,6 @@ class Transaksi extends Model
 {
     protected $table = 'transaksi';
     protected $fillable = [
-        'tanggal', 'last', 'in', 'out', 'saldo', 'sppd_id', 'anggaran_id'
+        'tanggal', 'last', 'in', 'out', 'saldo', 'pengeluaran_id'
     ];
 }

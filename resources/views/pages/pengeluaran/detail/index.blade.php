@@ -78,9 +78,17 @@
                             <a href="{{ route('admin.pengeluaran.detail.print', $id) }}" class="btn green btn-outline">
                                 <i class="fa fa-plus"></i> Print 
                             </a>
-                            <a href="{{ route('admin.pengeluaran.detail.create', $id) }}" class="btn blue btn-outline">
-                                <i class="fa fa-plus"></i> Add 
-                            </a>
+                            @php
+                                $sppd = \App\Models\Sppd::find($id);
+                            @endphp
+                            @if ($sppd->status == 0)
+                                <a href="{{ route('admin.pengeluaran.detail.complete', $id) }}" class="btn blue btn-outline">
+                                    <i class="fa fa-check"></i> Selesai 
+                                </a>
+                                <a href="{{ route('admin.pengeluaran.detail.create', $id) }}" class="btn blue btn-outline">
+                                    <i class="fa fa-plus"></i> Add 
+                                </a>
+                            @endif
                         </div>
                         <div class="tools"> </div>
                     </div>
