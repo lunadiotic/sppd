@@ -141,7 +141,7 @@
                                         </div>
                                     </div>
                                     <div id="relation">
-                                        @if (count($data->pengikut) > 0)
+                                        @if (count($data->pengikut[0]) > 0)
                                             @foreach ($data->pengikut as $pengikut)
                                                 <div class="row">
                                                     <div class="col-md-4">

@@ -25,8 +25,11 @@ class SppdServices extends GlobalServices {
     public function edit($id)
     {
         $sppd = Sppd::find($id);
-        $sppd['pengikut'] = explode(",", $sppd['pengikut']);
-        $sppd['pengikut'] = array_chunk($sppd['pengikut'],3);
+        if($sppd['pengikut']){
+            $sppd['pengikut'] = explode(",", $sppd['pengikut']);
+            $sppd['pengikut'] = array_chunk($sppd['pengikut'],3);
+        }
+        $sppd['pengikut'] = null;
         return $sppd;
     }
 
