@@ -68,7 +68,7 @@ class SppdController extends Controller
      */
     public function edit($id)
     {
-        $data = $this->srv->find($id);
+        $data = $this->srv->edit($id);
         return view('pages.sppd.edit', compact('data'));
     }
 

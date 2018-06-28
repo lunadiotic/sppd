@@ -11,9 +11,9 @@ class PengeluaranServices extends GlobalServices {
     public function create($request) 
     {
         $data = $request->all();
-        Sppd::where('id', $request->sppd_id)->update([
-            'status' => 1
-        ]);
+        // Sppd::where('id', $request->sppd_id)->update([
+        //     'status' => 1
+        // ]);
         $this->notif('Data has been created', 'success');
         return $instansi = Pengeluaran::create($data);
     }

@@ -19,27 +19,28 @@ class SppdServices extends GlobalServices {
 
     public function find($id)
     {
-        return $surat = Sppd::find($id);
+        return $sppd = Sppd::find($id);
+    }
+
+    public function edit($id)
+    {
+        $sppd = Sppd::find($id);
+        $sppd['pengikut'] = explode(",", $sppd['pengikut']);
+        $sppd['pengikut'] = array_chunk($sppd['pengikut'],3);
+        return $sppd;
     }
 
     public function update($request, $id)
     {
-        $input = $request->except('pelaksana');
-        $pelaksana = $request->pelaksana;
-        $surat = SuratPerintah::find($id);
-        $surat->update($input);
-
-        if(count($pelaksana) > 0) {
-            // $surat->sppd()->sync($pelaksana);
-            $surat->sppd()->delete();
-            foreach ($pelaksana as $idPelaksana) {
-                $surat->sppd()->create([
-                    'pegawai_id' => $idPelaksana,
-                ]);
-            }
+        $pengikut = array_chunk($request['pengikut'],3);
+        if(count($pengikut[0]) > 0) {
+            $pelaksana = $request['pengikut'] = implode(",", $request['pengikut']);
         } else {
-            $surat->sppd()->delete();
+            $pelaksana = null;
         }
+        
+        $sppd = Sppd::findOrFail($id);
+        $sppd->update($request->all());
 
         $this->notif('Data has been updated', 'success');
 

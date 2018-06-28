@@ -113,7 +113,7 @@ class PengeluaranDetailController extends Controller
 
     public function complete($id)
     {
-        return $data = $this->srv->complete($id);
+        $data = $this->srv->complete($id);
         return redirect()->route('admin.pengeluaran.detail.index', $id);
     }
 }

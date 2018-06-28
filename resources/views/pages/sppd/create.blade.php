@@ -81,7 +81,7 @@
                                         <small class="text-danger">{{ $errors->first('surat_perintah_id') }}</small>
                                     </div>
                                     <div class="form-group{{ $errors->has('nomor') ? ' has-error' : '' }}">
-                                        {!! Form::label('nomor', 'Nomor Surat') !!}
+                                        {!! Form::label('nomor', 'Nomor SPPD') !!}
                                         {!! Form::text('nomor', null, ['class' => 'form-control', 'required' => 'required']) !!}
                                         <small class="text-danger">{{ $errors->first('nomor') }}</small>
                                     </div>

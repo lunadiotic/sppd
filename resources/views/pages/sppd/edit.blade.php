@@ -141,29 +141,57 @@
                                         </div>
                                     </div>
                                     <div id="relation">
-                                        <div class="row">
-                                            <div class="col-md-5">
-                                                <div class="form-group{{ $errors->has('nama_pengikut') ? ' has-error' : '' }}">
-                                                    {!! Form::label('pengikut[]', 'Nama') !!}
-                                                    {!! Form::text('pengikut[]', null, ['class' => 'form-control', 'required' => 'required']) !!}
-                                                    <small class="text-danger">{{ $errors->first('pengikut[]') }}</small>
+                                        @if (count($data->pengikut) > 0)
+                                            @foreach ($data->pengikut as $pengikut)
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <div class="form-group">
+                                                            <label for="pengikut[]">Nama</label>
+                                                            <input class="form-control" required="required" name="pengikut[]" type="text" value="{{ $pengikut[0] }}"/>
+                                                            <small class="text-danger"></small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div class="form-group">
+                                                            <label for="pengikut[]">Umur</label>
+                                                            <input class="form-control" required="required" name="pengikut[]" type="text" value="{{ $pengikut[1] }}"/>
+                                                            <small class="text-danger"></small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <div class="form-group">
+                                                            <label for="pengikut[]">Hubungan Keluarga</label>
+                                                            <input class="form-control" required="required" name="pengikut[]" type="text" value="{{ $pengikut[2] }}"/>
+                                                            <small class="text-danger"></small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        @else
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <div class="form-group">
+                                                        <label for="pengikut[]">Nama</label>
+                                                        <input class="form-control" required="required" name="pengikut[]" type="text"/>
+                                                        <small class="text-danger"></small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label for="pengikut[]">Umur</label>
+                                                        <input class="form-control" required="required" name="pengikut[]" type="text"/>
+                                                        <small class="text-danger"></small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <div class="form-group">
+                                                        <label for="pengikut[]">Hubungan Keluarga</label>
+                                                        <input class="form-control" required="required" name="pengikut[]" type="text"/>
+                                                        <small class="text-danger"></small>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-2">
-                                                <div class="form-group{{ $errors->has('pengikut[]') ? ' has-error' : '' }}">
-                                                    {!! Form::label('pengikut[]', 'Umur') !!}
-                                                    {!! Form::text('pengikut[]', null, ['class' => 'form-control', 'required' => 'required']) !!}
-                                                    <small class="text-danger">{{ $errors->first('pengikut[]') }}</small>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-5">
-                                                <div class="form-group{{ $errors->has('hubungan_pengikut') ? ' has-error' : '' }}">
-                                                    {!! Form::label('pengikut[]', 'Hubungan Keluarga') !!}
-                                                    {!! Form::text('pengikut[]', null, ['class' => 'form-control', 'required' => 'required']) !!}
-                                                    <small class="text-danger">{{ $errors->first('pengikut[]') }}</small>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endif
                                     </div>
                                 
                                     <button class="btn btn-sm btn-primary" type="button" id="btn1">
@@ -202,7 +230,7 @@
                 autoclose: true
             });    
             $("#btn1").click(function(){
-                $("#relation").append('<div class="row"><div class="col-md-5"><div class="form-group"><label for="pengikut[]">Nama</label><input class="form-control" required="required" name="pengikut[]" type="text" id="pengikut[]"><small class="text-danger"></small></div></div><div class="col-md-2"><div class="form-group"><label for="pengikut[]">Umur</label><input class="form-control" required="required" name="pengikut[]" type="text" id="pengikut[]"><small class="text-danger"></small></div></div><div class="col-md-5"><div class="form-group"><label for="pengikut[]">Hubungan Keluarga</label><input class="form-control" required="required" name="pengikut[]" type="text" id="pengikut[]"><small class="text-danger"></small></div></div></div>');
+                $("#relation").append('<div class="row"><div class="col-md-5"><div class="form-group"><label for="pengikut[]">Nama</label><input class="form-control" required="required" name="pengikut[]" type="text"/><small class="text-danger"></small></div></div><div class="col-md-2"><div class="form-group"><label for="pengikut[]">Umur</label><input class="form-control" required="required" name="pengikut[]" type="text"/><small class="text-danger"></small></div></div><div class="col-md-5"><div class="form-group"><label for="pengikut[]">Hubungan Keluarga</label><input class="form-control" required="required" name="pengikut[]" type="text"/><small class="text-danger"></small></div></div></div>');
             });
         });
     </script>

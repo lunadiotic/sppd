@@ -2,7 +2,7 @@
 
 @php
   $no = 0;
-  $total = \App\Models\PengeluaranDetail::where('pengeluaran_id', $data['pengeluaran']->id)->sum('harga');
+  $total = \App\Models\PengeluaranDetail::where('pengeluaran_id', $data['pengeluaran']->id)->sum('total');
   $setting = \App\Models\Instansi::where('status', 1)->first();
 //   $dt = new \Carbon\Carbon($data->tanggal);
     $tanggal_berangkat = new \Carbon\Carbon($data['pengeluaran']->sppd->tanggal_berangkat);
