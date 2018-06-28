@@ -144,7 +144,7 @@
                                         @if (count($data->pengikut) > 0)
                                             @foreach ($data->pengikut as $pengikut)
                                                 <div class="row">
-                                                    <div class="col-md-5">
+                                                    <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="pengikut[]">Nama</label>
                                                             <input class="form-control" required="required" name="pengikut[]" type="text" value="{{ $pengikut[0] }}"/>
@@ -158,18 +158,24 @@
                                                             <small class="text-danger"></small>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-5">
+                                                    <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="pengikut[]">Hubungan Keluarga</label>
                                                             <input class="form-control" required="required" name="pengikut[]" type="text" value="{{ $pengikut[2] }}"/>
                                                             <small class="text-danger"></small>
                                                         </div>
                                                     </div>
+                                                    <div class="col-md-2">
+                                                        <div class="form-group">
+                                                            <br>
+                                                            <button class="btn btn-danger btn-sm removeButton" style="margin-top: 8px;" type="button">X</button>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             @endforeach
                                         @else
                                             <div class="row">
-                                                <div class="col-md-5">
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="pengikut[]">Nama</label>
                                                         <input class="form-control" required="required" name="pengikut[]" type="text"/>
@@ -183,11 +189,17 @@
                                                         <small class="text-danger"></small>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-5">
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="pengikut[]">Hubungan Keluarga</label>
                                                         <input class="form-control" required="required" name="pengikut[]" type="text"/>
                                                         <small class="text-danger"></small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <br>
+                                                        <button class="btn btn-danger btn-sm removeButton" style="margin-top: 8px;" type="button">X</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -230,8 +242,41 @@
                 autoclose: true
             });    
             $("#btn1").click(function(){
-                $("#relation").append('<div class="row"><div class="col-md-5"><div class="form-group"><label for="pengikut[]">Nama</label><input class="form-control" required="required" name="pengikut[]" type="text"/><small class="text-danger"></small></div></div><div class="col-md-2"><div class="form-group"><label for="pengikut[]">Umur</label><input class="form-control" required="required" name="pengikut[]" type="text"/><small class="text-danger"></small></div></div><div class="col-md-5"><div class="form-group"><label for="pengikut[]">Hubungan Keluarga</label><input class="form-control" required="required" name="pengikut[]" type="text"/><small class="text-danger"></small></div></div></div>');
+                $("#relation").append(`
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="pengikut[]">Nama</label>
+                            <input class="form-control" required="required" name="pengikut[]" type="text"/>
+                            <small class="text-danger"></small>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="pengikut[]">Umur</label>
+                            <input class="form-control" required="required" name="pengikut[]" type="text"/>
+                            <small class="text-danger"></small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="pengikut[]">Hubungan Keluarga</label>
+                            <input class="form-control" required="required" name="pengikut[]" type="text"/>
+                            <small class="text-danger"></small>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <br>
+                            <button class="btn btn-danger btn-sm removeButton" style="margin-top: 8px;" type="button">X</button>
+                        </div>
+                    </div>
+                </div>
+                `);
             });
+            $(".removeButton").click(function(){
+                $(this).parent().parent().parent().remove();
+            }); 
         });
     </script>
     <script>
