@@ -105,9 +105,9 @@ class PengeluaranDetailController extends Controller
         return $this->srv->getTable($id);
     }
 
-    public function print($id)
+    public function printReport($id)
     {
-        $data = $this->srv->print($id);
+        $data = $this->srv->printReport($id);
         return view('pages.pengeluaran.detail.print', compact('data'));
     }
 

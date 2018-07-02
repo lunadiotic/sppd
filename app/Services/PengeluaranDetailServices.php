@@ -38,7 +38,7 @@ class PengeluaranDetailServices extends GlobalServices {
         return $data;
     }
 
-    public function print($id)
+    public function printReport($id)
     {
         $data['pengeluaran'] = Pengeluaran::with('sppd')->find($id);
         // $data['detail'] = PengeluaranDetail::with('biaya')->where('pengeluaran_id', $id)->get();
