@@ -36,6 +36,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
     Route::resource('instansi', 'InstansiController');
     Route::resource('biaya', 'BiayaController');
     Route::resource('pegawai', 'PegawaiController');
+    Route::get('pegawai/exim/index', 'PegawaiEximController@index')->name('pegawai.exim.index');
+    Route::get('pegawai/exim/import', 'PegawaiEximController@dataImport')->name('pegawai.exim.import');
     Route::resource('surat', 'SuratController');
     Route::resource('sppd', 'SppdController');
     Route::resource('pengeluaran', 'PengeluaranController');
